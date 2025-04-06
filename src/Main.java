@@ -12,9 +12,16 @@ public class Main {
 
         System.out.println("Задача №2");
         int[] expenses1 = Arrays.copyOf(expenses, expenses.length);
-        Arrays.sort(expenses1);
-        int maxExpenses = expenses1[expenses1.length - 1];
+        int maxExpenses = expenses1[0];
         int minExpenses = expenses1[0];
+        for (int i = 0; i < expenses1.length; i++) {
+            if (expenses1[i] < minExpenses) {
+                minExpenses = expenses1[i];
+            }
+            if (expenses1[i] > maxExpenses) {
+                maxExpenses = expenses1[i];
+            }
+        }
         System.out.println("Минимальная сумма трат за неделю составила " + minExpenses +
                 " рублей. Максимальная сумма трат за неделю составила " + maxExpenses + " рублей.");
 
@@ -30,8 +37,15 @@ public class Main {
 
         System.out.println("Задача №4");
         char[] employeeName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = employeeName.length-1; i >= 0; i--) {
-            System.out.print(employeeName[i]);
+        int left = 0;
+        int right = employeeName.length - 1;
+        while (left < right) {
+            char upheaval = employeeName[left];
+            employeeName[left] = employeeName[right];
+            employeeName[right] = upheaval;
+            left++;
+            right--;
         }
+        System.out.println(employeeName);
     }
 }
